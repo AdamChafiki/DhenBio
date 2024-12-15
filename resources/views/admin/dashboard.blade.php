@@ -10,6 +10,7 @@
     <div class="w-full max-w-2xl p-8 bg-white rounded-lg shadow-lg">
         <h1 class="text-3xl font-bold mb-4">مرحباً بك في لوحة التحكم</h1>
         <p>هذه لوحة التحكم الخاصة بك كمدير.</p>
+        <p>{{ $admin->email }}</p>
         <a href="/admin/logout" class="text-blue-500 mt-4 inline-block">تسجيل الخروج</a>
     </div>
 </body>

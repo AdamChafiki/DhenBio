@@ -2,18 +2,17 @@
 
 namespace App\Http\Middleware;
 
-// app/Http/Middleware/IsAdmin.php
-
-namespace App\Http\Middleware;
-
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class IsAdmin
 {
     public function handle(Request $request, Closure $next)
     {
-        if (!session('admin')) {
+        // Check if the user is not logged in or not an admin
+        if (!Auth::check() || !Auth::user()->is_admin) {
+            // Redirect to the login page with an error message
             return redirect('/admin/login')->withErrors(['message' => 'يجب أن تكون مسجلاً كمسؤول للوصول إلى لوحة التحكم']);
         }
 

@@ -13,13 +13,13 @@
         <h1 class="text-2xl font-bold text-center mb-4">تسجيل دخول</h1>
 
         <!-- Login Form -->
-        <form action="/admin/login" method="POST">
+        <form action={{ route('admin.login') }} method="POST">
             @csrf
             <!-- Email -->
             <div class="mb-4">
                 <label for="email" class="block text-gray-700">البريد الإلكتروني</label>
                 <input type="email" name="email" id="email" class="w-full p-3 border border-gray-300 rounded-lg"
-                    placeholder="أدخل البريد الإلكتروني" value="{{ old('email') }}" required>
+                    placeholder="أدخل البريد الإلكتروني" value="{{ old('email') }}" >
                 @error('email')
                     <div class="text-red-500 text-sm mt-2">{{ $message }}</div>
                 @enderror
@@ -29,7 +29,7 @@
             <div class="mb-4">
                 <label for="password" class="block text-gray-700">كلمة المرور</label>
                 <input type="password" name="password" id="password"
-                    class="w-full p-3 border border-gray-300 rounded-lg" placeholder="أدخل كلمة المرور" required>
+                    class="w-full p-3 border border-gray-300 rounded-lg" placeholder="أدخل كلمة المرور" >
                 @error('password')
                     <div class="text-red-500 text-sm mt-2">{{ $message }}</div>
                 @enderror
