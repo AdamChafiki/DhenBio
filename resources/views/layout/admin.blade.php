@@ -11,7 +11,7 @@
 
 <body>
     <div class="flex">
-        <div class="flex h-screen flex-col w-96 justify-between border-e bg-white">
+        <div class="flex h-screen w-1/5 flex-col  justify-between border-e bg-white">
             <div class="px-4 py-6">
                 <span class="grid h-20 w-20 rounded-full place-content-center bg-gray-100 text-xs text-gray-600">
                     <img alt="" src="https://dhenbio.com/storage/img/logo.1654528955.png"
@@ -20,7 +20,7 @@
 
                 <ul class="mt-6 space-y-1">
                     <li>
-                        <a href="#"
+                        <a href="{{ route('admin.dashboard') }}"
                             class="block rounded-lg bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700">
                             اللوحة الرئيسية
                         </a>
@@ -44,14 +44,14 @@
 
                             <ul class="mt-2 space-y-1 px-4">
                                 <li>
-                                    <a href="#"
+                                    <a href="{{ route('products.index') }}"
                                         class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700">
                                         قائمة المنتجات
                                     </a>
                                 </li>
 
                                 <li>
-                                    <a href="#"
+                                    <a href="{{ route('products.create') }}"
                                         class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700">
                                         إضافة منتج
                                     </a>
@@ -138,7 +138,10 @@
                 </a>
             </div>
         </div>
-        <main class="min-h-screen">
+        <main class="min-h-screen w-4/5 ">
+            <header class="p-2 bg-teal-100 w-full">
+                <h2 class="text-xl font-semibold text-gray-500">@yield('header')</h2>
+            </header>
             @yield('content')
         </main>
     </div>

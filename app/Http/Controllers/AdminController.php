@@ -10,7 +10,7 @@ class AdminController extends Controller
     // Show login form
     public function showLoginForm()
     {
-        return view('admin.login');
+        return view('admin.auth.login');
     }
 
     // Handle login
@@ -20,7 +20,6 @@ class AdminController extends Controller
             session()->regenerate();
             return  to_route('admin.dashboard');
         }
-        dd("not good");
         return redirect('/admin/login')->withErrors(['message' => 'البريد الإلكتروني أو كلمة المرور غير صحيحة']);
     }
 
@@ -30,7 +29,7 @@ class AdminController extends Controller
     public function dashboard()
     {
         $admin = Auth::user();
-        return view('admin.dashboard', compact('admin'));
+        return view('admin.dashboard.dashboard', compact('admin'));
     }
 
     // Handle logout

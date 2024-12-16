@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -21,12 +22,7 @@ Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->middlewar
 Route::get('/admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
 
 
-
-
-
-
-
-
-
-        // Redirect back to login with error message
-        // return redirect('/admin/login')->withErrors(['message' => 'البريد الإلكتروني أو كلمة المرور غير صحيحة']);});
+//Product
+Route::prefix('admin')->middleware('admin')->group(function () {
+    Route::resource('products', ProductController::class);
+});
