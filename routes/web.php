@@ -5,7 +5,8 @@ use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    $products = App\Models\Product::all();
+    return view('welcome', compact('products'));
 });
 
 
