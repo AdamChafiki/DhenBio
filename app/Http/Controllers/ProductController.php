@@ -16,7 +16,7 @@ class ProductController extends Controller
         $admin = Auth::user();
 
         $products = Product::all(); // Retrieve all products
-        return view('admin.product.index', compact('products','admin'));
+        return view('admin.product.index', compact('products', 'admin'));
     }
 
     public function create()
@@ -46,11 +46,11 @@ class ProductController extends Controller
         ]);
 
         // Handle File Upload
-        $imagePath = $request->file('image')->store('products', 'public'); 
+        $imagePath = $request->file('image')->store('products', 'public');
 
         $validatedData['image'] = $imagePath;
 
-        Product::create($validatedData); 
+        Product::create($validatedData);
 
         return redirect()->route('products.index')->with('success', 'تم إضافة المنتج بنجاح!');
     }
@@ -63,6 +63,12 @@ class ProductController extends Controller
         $admin = Auth::user();
         return view('admin.product.edit', compact('product', 'admin'));
     }
+    public function show(Product $product)
+    {
+        $admin = Auth::user();
+        return view('admin.product.show', compact('product', 'admin'));
+    }
+
 
     /**
      * Update the specified resource in storage.
@@ -84,10 +90,10 @@ class ProductController extends Controller
 
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('products', 'public'); // Store the image
-            $validatedData['image'] = $imagePath; 
+            $validatedData['image'] = $imagePath;
         }
 
-        $product->update($validatedData); 
+        $product->update($validatedData);
 
         return redirect()->route('products.index')->with('success', 'تم تحديث المنتج بنجاح!');
     }

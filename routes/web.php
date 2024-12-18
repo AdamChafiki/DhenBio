@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CartController;
 
 Route::get('/', function () {
     $products = App\Models\Product::all();
@@ -10,6 +11,8 @@ Route::get('/', function () {
 });
 
 
+
+// Admin
 // Show login form
 Route::get('/admin/login', [AdminController::class, 'showLoginForm'])->name('admin.login');
 
@@ -23,7 +26,24 @@ Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->middlewar
 Route::get('/admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
 
 
-//Product
 Route::prefix('admin')->middleware('admin')->group(function () {
-    Route::resource('products', ProductController::class);
+    Route::resource('products', ProductController::class)->except('show');
 });
+
+// Public `show` route for customers
+Route::get('products/{product}', [ProductController::class, 'show'])->name('products.show'); // Use "products.show"
+
+
+
+// cart
+// View the cart
+Route::get('cart', [CartController::class, 'viewCart'])->name('cart.view');
+
+// Add to cart
+Route::post('cart/add/{id}', [CartController::class, 'addToCart'])->name('cart.add');
+
+// Clear the cart
+Route::post('cart/clear', [CartController::class, 'clearCart'])->name('cart.clear');
+
+// Remove from cart
+Route::post('cart/remove/{id}', [CartController::class, 'removeFromCart'])->name('cart.remove');

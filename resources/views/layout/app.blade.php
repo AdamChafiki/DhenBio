@@ -19,7 +19,7 @@
     <!-- Header -->
     <header class="bg-white py-6">
         <div class="mx-auto flex h-16 max-w-screen-xl items-center gap-8 px-4 sm:px-6 lg:px-8">
-            <a href="#">
+            <a href="/">
                 <img src="https://dhenbio.com/storage/img/logo.1654528955.png" style="max-height:65px" alt="DhenBio">
             </a>
 
@@ -30,27 +30,28 @@
                             <a class="text-gray-500 transition hover:text-gray-500/75" href="#"> أملو و منتوجات
                                 أخرى </a>
                         </li>
-
                         <li>
                             <a class="text-gray-500 transition hover:text-gray-500/75" href="#"> العروض </a>
                         </li>
-
                         <li>
                             <a class="text-gray-500 transition hover:text-gray-500/75" href="#"> زيت أركان </a>
                         </li>
-
                         <li>
-                            <a class="text-gray-500 transition hover:text-gray-500/75" href="#">
-                                عسل </a>
+                            <a class="text-gray-500 transition hover:text-gray-500/75" href="#"> عسل </a>
                         </li>
                     </ul>
                 </nav>
 
                 <div class="flex items-center gap-4">
                     <div class="sm:flex sm:gap-4">
+                        <!-- Cart icon with dynamic count -->
                         <a class="flex items-center rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-700"
-                            href="#">
-                            (1)
+                            href="{{ route('cart.view') }}">
+                            <!-- Display the cart count -->
+                            @php
+                                $cartCount = session('cart') ? count(session('cart')) : 0;
+                            @endphp
+                            ({{ $cartCount }})
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                 stroke-linejoin="round"
@@ -75,6 +76,7 @@
             </div>
         </div>
     </header>
+
 
     <!-- Main Content Area -->
     <main class=" min-h-screen">

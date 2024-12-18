@@ -77,7 +77,7 @@
                 <ul class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                     @foreach ($products as $product)
                         <li class="relative group bg-red-500 h-[100px] w-[300px]">
-                            <a href="#" class="group block overflow-hidden">
+                            <a href="{{ route('products.show', $product->id) }}" class="group block overflow-hidden">
                                 <!-- Image -->
                                 <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}"
                                     class="h-[100px] w-[300px] object-cover transition duration-500 group-hover:scale-105 sm:h-[300px]">
@@ -85,10 +85,12 @@
                             <p class="mt-2 text-lg text-gray-500">{{ $product->name }}</p>
                             <span class="mt-2 text-sm text-teal-500">{{ $product->price }} MAD</span>
 
+                            <!-- Buttons -->
                             <div
-                                class="absolute  bottom-0 flex w-full justify-center bg-opacity-50 bg-black opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                class="absolute inset-x-0 top-0 flex justify-between items-center px-4 py-2 bg-opacity-50 bg-black opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <!-- Cart Button -->
                                 <button
-                                    class="text-white px-4 py-2 bg-teal-600 rounded-md hover:bg-teal-700 transition-bg duration-300">
+                                    class="text-white text-sm px-4 py-2 bg-teal-600 rounded-md hover:bg-teal-700 transition-bg duration-300 flex items-center gap-2">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                         viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                         stroke-linecap="round" stroke-linejoin="round"
@@ -99,9 +101,9 @@
                                         <path d="M17 17h-11v-14h-2" />
                                         <path d="M6 5l14 1l-1 7h-13" />
                                     </svg>
+                                    Add to cart
                                 </button>
                             </div>
-
                         </li>
                     @endforeach
 
