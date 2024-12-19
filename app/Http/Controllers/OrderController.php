@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Costumer;
+use App\Models\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -18,7 +18,7 @@ class OrderController extends Controller
         ]);
 
 
-        Costumer::create([
+        Customer::create([
             'name' => $request->name,
             'city' => $request->city,
             'phone' => $request->phone,

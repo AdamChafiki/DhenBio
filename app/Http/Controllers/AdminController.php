@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Costumer;
+
+
 
 class AdminController extends Controller
 {
@@ -30,6 +33,15 @@ class AdminController extends Controller
     {
         $admin = Auth::user();
         return view('admin.dashboard.dashboard', compact('admin'));
+    }
+
+    public function showCustomers()
+    {
+        $customers = Costumer::all();
+        $admin = Auth::user();
+
+        // Pass customers to the view
+        return view('admin.costumer.index', compact('customers','admin'));
     }
 
     // Handle logout

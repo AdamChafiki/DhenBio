@@ -41,7 +41,7 @@ class CartController extends Controller
     public function viewCart()
     {
         // Get the cart from the session
-        $cart = Session::get('cart',[]);
+        $cart = Session::get('cart', []);
 
         return view('cart.index', compact('cart'));
     }

@@ -31,6 +31,11 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::resource('products', ProductController::class)->except('show');
 });
 
+Route::get('/admin/customers', [AdminController::class, 'showCustomers'])->name('admin.customers');
+
+
+
+
 // Public `show` route for customers
 Route::get('products/{product}', [ProductController::class, 'show'])->name('products.show'); // Use "products.show"
 
