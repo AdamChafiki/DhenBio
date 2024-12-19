@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\OrderController;
 
 Route::get('/', function () {
     $products = App\Models\Product::all();
@@ -47,3 +48,8 @@ Route::post('cart/clear', [CartController::class, 'clearCart'])->name('cart.clea
 
 // Remove from cart
 Route::post('cart/remove/{id}', [CartController::class, 'removeFromCart'])->name('cart.remove');
+
+
+
+// Order
+Route::post('/submit-order', [OrderController::class, 'submitOrder'])->name('order.submit');

@@ -89,20 +89,20 @@
                             <div
                                 class="absolute inset-x-0 top-0 flex justify-between items-center px-4 py-2 bg-opacity-50 bg-black opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                 <!-- Cart Button -->
-                                <button
-                                    class="text-white text-sm px-4 py-2 bg-teal-600 rounded-md hover:bg-teal-700 transition-bg duration-300 flex items-center gap-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round"
-                                        class="icon icon-tabler icons-tabler-outline icon-tabler-shopping-cart">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                        <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
-                                        <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
-                                        <path d="M17 17h-11v-14h-2" />
-                                        <path d="M6 5l14 1l-1 7h-13" />
-                                    </svg>
-                                    Add to cart
-                                </button>
+                                <form action="{{ route('cart.add', $product->id) }}" method="POST">
+                                    @csrf
+                                    <button type="submit"
+                                        class="bg-teal-600 text-sm flex items-center text-white px-6 py-3 rounded hover:bg-teal-700 transition">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round" class="icon ml-2">
+                                            <path stroke="none" d=" M0 0h24v24H0z" fill="none" />
+                                            <path d="M12 5l0 14" />
+                                            <path d="M5 12l14 0" />
+                                        </svg>
+                                        أضف إلى السلة
+                                    </button>
+                                </form>
                             </div>
                         </li>
                     @endforeach
