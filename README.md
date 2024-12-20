@@ -7,7 +7,7 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-# DhenBio-Copy
+# DhenBio
 
 DhenBio-Copy is a web application developed using the **Laravel framework** for managing and processing customer orders in an e-commerce environment. The application allows users to place orders, while administrators can manage order statuses and review order details.
 
