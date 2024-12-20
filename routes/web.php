@@ -31,6 +31,9 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::resource('products', ProductController::class)->except('show');
 });
 
+Route::get('/admin/customers', [AdminController::class, 'showCustomers'])->name('admin.customers');
+
+
 // Public `show` route for customers
 Route::get('products/{product}', [ProductController::class, 'show'])->name('products.show'); // Use "products.show"
 
@@ -53,3 +56,5 @@ Route::post('cart/remove/{id}', [CartController::class, 'removeFromCart'])->name
 
 // Order
 Route::post('/submit-order', [OrderController::class, 'submitOrder'])->name('order.submit');
+Route::get('//admin/orders', [OrderController::class, 'showOrders'])->name('order.show');
+Route::put('/admin/orders/{orderId}/status', [OrderController::class, 'updateStatus'])->name('admin.orders.updateStatus');

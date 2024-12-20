@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Costumer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,7 +23,14 @@ class AdminController extends Controller
         }
         return redirect('/admin/login')->withErrors(['message' => 'البريد الإلكتروني أو كلمة المرور غير صحيحة']);
     }
+    public function showCustomers()
+    {
+        $customers = Costumer::all();
+        $admin = Auth::user();
 
+        // Pass customers to the view
+        return view('admin.costumer.index', compact('customers', 'admin'));
+    }
 
 
     // Show the admin dashboard
