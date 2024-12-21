@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Costumer;
+use App\Models\Order;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -68,8 +70,23 @@ class AdminController extends Controller
     public function dashboard()
     {
         $admin = Auth::user();
-        return view('admin.dashboard.dashboard', compact('admin'));
+
+        $productsCount = Product::count();
+        $customersCount = Costumer::count();
+        $ordersCount = Order::count();
+
+        // Fetch the number of orders per day for the last 7 days
+        $ordersPerDay = Order::selectRaw('DATE(created_at) as date, count(*) as count')
+            ->groupBy('date')
+            ->orderBy('date', 'desc')
+            ->limit(7)
+            ->get();
+
+        // Pass data to the view
+        return view('admin.dashboard.dashboard', compact('admin', 'productsCount', 'customersCount', 'ordersCount', 'ordersPerDay'));
     }
+
+
 
     // Handle logout
     public function logout()

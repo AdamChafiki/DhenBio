@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title', 'Dhen Bio')</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     @vite('resources/css/app.css')
 </head>
 
@@ -92,7 +94,7 @@
 
                             <ul class="mt-2 space-y-1 px-4">
                                 <li>
-                                    <a href="#"
+                                    <a href="{{ route('admin.settings') }}"
                                         class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700">
                                         الإعدادات
                                     </a>
