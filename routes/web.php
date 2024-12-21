@@ -58,3 +58,8 @@ Route::post('cart/remove/{id}', [CartController::class, 'removeFromCart'])->name
 Route::post('/submit-order', [OrderController::class, 'submitOrder'])->name('order.submit');
 Route::get('//admin/orders', [OrderController::class, 'showOrders'])->name('order.show');
 Route::put('/admin/orders/{orderId}/status', [OrderController::class, 'updateStatus'])->name('admin.orders.updateStatus');
+
+
+// setting 
+Route::get('/admin/settings', [AdminController::class, 'showSettings'])->name('admin.settings');
+Route::put('/admin/settings', [AdminController::class, 'updateSettings'])->name('admin.settings.update');

@@ -32,6 +32,37 @@ class AdminController extends Controller
         return view('admin.costumer.index', compact('customers', 'admin'));
     }
 
+    public function showSettings()
+    {
+        $admin = Auth::user();
+        return view('admin.setting.index', compact('admin'));
+    }
+
+    // In AdminController.php
+    public function updateSettings(Request $request)
+    {
+        // Validate the input
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255|unique:users,email,' . Auth::id(),
+            'password' => 'nullable|confirmed|min:6',
+        ]);
+
+        $admin = Auth::user();
+
+        $admin->name = $request->input('name');
+        $admin->email = $request->input('email');
+
+        if ($request->filled('password')) {
+            $admin->password = bcrypt($request->input('password'));
+        }
+
+        $admin->save();
+
+        return redirect()->route('admin.settings')->with('success', 'تم تحديث الإعدادات بنجاح');
+    }
+
+
 
     // Show the admin dashboard
     public function dashboard()
